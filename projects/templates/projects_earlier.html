@@ -1,0 +1,49 @@
+
+{% extends 'main.html' %}
+
+{% block content %}
+<section>
+    <table class="table"><thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Votes</th>
+            <th scope="col">Votes Ratio</th>
+            <th scope="col">Created On</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for project in projects %}
+            <tr>
+                    <th scope="row">{{ project.id }}</th>
+                    <td>{{ project.title }}</td>
+                    <td>{{ project.vote_total }}</td>
+                    <td>{{ project.vote_ratio }}</td>
+                    <td>{{ project.created_on }}</td>
+                    <td>
+                        <a class="btn btn-warning btn-sm text-white" href="{% url 'project-detail' project.title %}"> View
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-info btn-sm text-white" href="{% url 'project-update' project.id %}"> Edit
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger btn-sm text-white" href="{% url 'project-delete' project.id %}"> Delete
+                        </a>
+                    </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+</section>
+
+projects/templates/projects.html:47
+
+
+{% endblock content%}
